@@ -159,7 +159,7 @@ configure_export_env
 
 # Install AppleColorEmoji font for emoji rendering in Playwright screenshots
 APPLE_EMOJI_URL="https://github.com/zhdsmy/apple-emoji/raw/ios-17.4/fonts/AppleColorEmoji.ttf"
-FONT_DIR="$BUILD_DIR/.apt/usr/share/fonts/truetype/apple-emoji"
+FONT_DIR="$BUILD_DIR/.local/share/fonts"
 mkdir -p "$FONT_DIR"
 curl -L "$APPLE_EMOJI_URL" -o "$FONT_DIR/AppleColorEmoji.ttf"
 HOME="$BUILD_DIR" fc-cache -f -v
