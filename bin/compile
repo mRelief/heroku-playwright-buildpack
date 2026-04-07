@@ -132,8 +132,6 @@ configure_export_env() {
 export PLAYWRIGHT_BROWSERS_PATH=0
 # They are not referenced correctly for ffmpeg
 export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/app/.apt/usr/lib/x86_64-linux-gnu/pulseaudio/:/app/.apt/lib/x86_64-linux-gnu/
-# Rebuild font cache at boot with correct /app paths (build-time cache uses /tmp/build_* paths)
-fc-cache -f 2>/dev/null || true
 EOF
 
     # Give environment variable to other buildpacks
