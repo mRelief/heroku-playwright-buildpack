@@ -156,14 +156,3 @@ export_env_dir() {
 export_env_dir "$ENV_DIR" PLAYWRIGHT_BUILDPACK_BROWSERS
 install_system_deps
 configure_export_env
-
-# Make emoji fonts available to fontconfig.
-# APT-installed Noto Color Emoji (CBDT format, works with Chromium) lives in
-# .apt/usr/share/fonts/ which fontconfig doesn't scan. Copy it to a scanned dir.
-# Also install AppleColorEmoji as a fallback.
-FONT_DIR="$BUILD_DIR/.local/share/fonts"
-mkdir -p "$FONT_DIR"
-find "$BUILD_DIR/.apt/usr/share/fonts" -name "NotoColorEmoji*" -exec cp {} "$FONT_DIR/" \; 2>/dev/null || true
-APPLE_EMOJI_URL="https://github.com/zhdsmy/apple-emoji/raw/ios-17.4/fonts/AppleColorEmoji.ttf"
-curl -L "$APPLE_EMOJI_URL" -o "$FONT_DIR/AppleColorEmoji.ttf"
-HOME="$BUILD_DIR" fc-cache -f -v
